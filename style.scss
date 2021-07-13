@@ -18,10 +18,12 @@ body {
 .container {
     width: 800px;
     height: 600px;
-    background: hsla(33, 100%, 53%, 1);
-    background: linear-gradient(180deg, hsla(33, 100%, 53%, 1) 0%, hsla(58, 100%, 68%, 1) 100%);
-    background: -moz-linear-gradient(180deg, hsla(33, 100%, 53%, 1) 0%, hsla(58, 100%, 68%, 1) 100%);
-    background: -webkit-linear-gradient(180deg, hsla(33, 100%, 53%, 1) 0%, hsla(58, 100%, 68%, 1) 100%);
+    
+    background: hsla(227, 81%, 55%, 1);
+    background: linear-gradient(180deg, hsla(227, 81%, 55%, 1) 0%, hsla(204, 93%, 78%, 1) 100%);
+    background: -moz-linear-gradient(180deg, hsla(227, 81%, 55%, 1) 0%, hsla(204, 93%, 78%, 1) 100%);
+    background: -webkit-linear-gradient(180deg, hsla(227, 81%, 55%, 1) 0%, hsla(204, 93%, 78%, 1) 100%);
+
     display: grid;
     grid-template: 100px 300px 100px 100px / repeat(8, 100px);
     margin: 100px auto 0;
@@ -46,6 +48,9 @@ body {
 
     &__info {
         width: 90%;
+        font-size: 1.4em;
+        word-wrap: break-word;
+        line-height: 2;
     }
 
     &__logo img {
@@ -54,34 +59,24 @@ body {
     }
 }
 
-.bloc-h , .bloc-j{
-    background: rgba( 255, 255, 255, 0.15 );
-    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
-    backdrop-filter: blur( 4px );
-    -webkit-backdrop-filter: blur( 4px );
+.bloc-h,
+.bloc-j {
+    //background: rgba(255, 255, 255, 0.15);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
     border-radius: 5px;
-    border: 1px solid rgba( 255, 255, 255, 0.18 );
-}
-
-.bloc-info .temps {
-    font-size: 40px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
 }
 
 .bloc-info .temps::first-letter {
     text-transform: capitalize;
 }
 
-.bloc-info .temperature {
-    font-size: 60px;
-}
-
-.bloc-info .localisation {
-    font-size: 40px;
-    word-wrap: break-word;
-}
 
 .heure-bloc-prevision {
     grid-area: 3 / 1 / 4 / -1;
+    text-align: center;
 }
 
 .jour-prevision-bloc {
@@ -114,23 +109,33 @@ body {
 
 /* Animation chargement */
 
-.overlay-icone-chargement {
+.loader {
     position: absolute;
     width: 100%;
     height: 100%;
-    background: linear-gradient(45deg, rgb(59, 50, 50), rgb(22, 28, 29));
+    background: linear-gradient(45deg, rgb(25, 38, 110), rgb(24, 106, 121));
     transition: opacity 1.1s ease-out;
     z-index: 1000;
 }
-
-.overlay-icone-chargement img {
+.loader img {
     width: 150px;
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
 }
-
 .disparition {
     opacity: 0;
 }
+
+
+@keyframes loader {
+    0% {
+      opacity: 1;
+    }
+  
+    100% {
+      visibility: hidden;
+      opacity: 0;
+    }
+  }
