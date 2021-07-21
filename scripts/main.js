@@ -13,7 +13,9 @@ const localisation = document.querySelector(".localisation");
 const heure = document.querySelectorAll(".heure-nom-prevision");
 const tempsH = document.querySelectorAll(".heure-prevision-valeur");
 const joursDiv = document.querySelectorAll(".jour-prevision-nom");
-const tempJourDiv = document.querySelectorAll(".jour-prevision-temp");
+const tempJoursDiv = document.querySelectorAll(".jour-prevision-temp");
+const imgIcon = document.querySelector(".logo-meteo");
+
 if (navigator.geolocation) {
   navigator.geolocation.getCurrentPosition(
     (position) => {
@@ -68,10 +70,18 @@ function appelApi(long, lat) {
         joursDiv[k].innerText = tabJourEnOrdre[k].slice(0, 3);
       }
 
-      for (let m = 0; m < 7; m++) {
-        tempJoursDiv[m].innerText = `${Math.trunc(
-          resultatsAPI.daily[m + 1].temp.day
+      for (let l = 0; l < 7; l++) {
+        tempJoursDiv[l].innerText = `${Math.trunc(
+          resultApi.daily[l + 1].temp.day
         )}°`;
+      }
+
+      //Partie icon
+
+      if (heureAct > 6 && heureAct < 21) {
+        imgIcon.src = `ressources/jour/${resultApi.current.weather[0].icon}.svg`;
+      } else {
+        imgIcon.src = `ressources/nuit/${resultApi.current.weather[0].icon}.svg`;
       }
     });
 }
