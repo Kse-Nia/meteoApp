@@ -1,4 +1,4 @@
-import tabJourEnOrdre from './Utilitaire/gestionTemps.js';
+import tabJourEnOrdre from "./Utilitaire/gestionTemps.js";
 
 // Mise en place API
 
@@ -12,8 +12,8 @@ const temperature = document.querySelector(".temperature");
 const localisation = document.querySelector(".localisation");
 const heure = document.querySelectorAll(".heure-nom-prevision");
 const tempsH = document.querySelectorAll(".heure-prevision-valeur");
-const joursDiv = document.querySelectorAll('jour-prevision-nom');
-
+const joursDiv = document.querySelectorAll(".jour-prevision-nom");
+const tempJourDiv = document.querySelectorAll(".jour-prevision-temp");
 if (navigator.geolocation) {
   navigator.geolocation.getCurrentPosition(
     (position) => {
@@ -60,12 +60,18 @@ function appelApi(long, lat) {
         }
       }
 
-      for(let j = 0; j < tempsH.length; j++ ){
+      for (let j = 0; j < tempsH.length; j++) {
         tempsH[j].innerText = `${Math.trunc(resultApi.hourly[j * 3].temp)}°`;
       }
 
       for (let k = 0; k < tabJourEnOrdre.length; k++) {
         joursDiv[k].innerText = tabJourEnOrdre[k].slice(0, 3);
+      }
+
+      for (let m = 0; m < 7; m++) {
+        tempJoursDiv[m].innerText = `${Math.trunc(
+          resultatsAPI.daily[m + 1].temp.day
+        )}°`;
       }
     });
 }
