@@ -14,7 +14,7 @@ const heure = document.querySelectorAll(".heure-nom-prevision");
 const tempsH = document.querySelectorAll(".heure-prevision-valeur");
 const joursDiv = document.querySelectorAll(".jour-prevision-nom");
 const tempJoursDiv = document.querySelectorAll(".jour-prevision-temp");
-const imgIcon = document.querySelector(".logo-meteo");
+const imgIcon = document.querySelector(".bloc__img");
 
 if (navigator.geolocation) {
   navigator.geolocation.getCurrentPosition(
